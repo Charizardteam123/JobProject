@@ -12,4 +12,11 @@ router.post('/login', userController.verifyUser);
 // Get user's saved jobs
 router.get('/saved-jobs', userController.getSavedJobs);
 
+// New routes
+router.put('/profile', userController.updateProfile);
+router.get('/profile', userController.getProfile);
+router.post('/saved-jobs/:jobId', userController.addSavedJob);
+router.delete('/saved-jobs/:jobId', userController.removeSavedJob);
+
 export default router;
+
