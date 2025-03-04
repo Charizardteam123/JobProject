@@ -49,7 +49,7 @@ async function fetchAllJobsToFile() {
     let currentPage = 0;
     let totalPages = 1; // Will be updated after first request
 
-    // Process all pages
+    // Process all pages - each page has 20 jobs
     while (currentPage < totalPages) {
       currentPage++;
       params.set('page', currentPage.toString());
@@ -59,6 +59,8 @@ async function fetchAllJobsToFile() {
           totalPages > 1 ? '/' + totalPages : ''
         }...`
       );
+
+      // here we set the page number that is to be fetched
       const response = await fetch(`${url}?${params}`, requestOptions);
 
       if (!response.ok) {
@@ -93,7 +95,7 @@ async function fetchAllJobsToFile() {
       );
 
       // Add a delay between API requests to avoid rate limiting
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      // await new Promise((resolve) => setTimeout(resolve, 1000));
     }
 
     console.log(`\nCompleted job data collection.`);
