@@ -3,21 +3,13 @@ import userController from '../controllers/userController.js';
 
 const router = express.Router();
 
-// Signup route
-router.post('/signup', userController.signup);
+// Create user (signup)
+router.post('/signup', userController.createUser);
 
-// Login route
-router.post('/login', userController.login);
-
-// Signout route
-router.post('/signout', userController.signout);
-
-// Get user information
-router.get('/profile', userController.getUserInfo);
+// Verify user (login)
+router.post('/login', userController.verifyUser);
 
 // Get user's saved jobs
 router.get('/saved-jobs', userController.getSavedJobs);
-
-
 
 export default router;

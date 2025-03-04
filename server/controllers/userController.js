@@ -1,4 +1,4 @@
-import User from '../models/userModel';
+import User from '../models/userModel.js';
 import bcrypt from 'bcryptjs';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -85,3 +85,5 @@ userController.getSavedJobs = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+export default userController;
