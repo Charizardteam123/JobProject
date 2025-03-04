@@ -1,5 +1,7 @@
 import Job from '../models/jobModel.js';
 
+
+///receive data from the ai controller...
 const jobController = {
     getAllJobs: async (req, res) => {
         try {
@@ -10,10 +12,10 @@ const jobController = {
         }
     },
 
+
     getJob: async (req, res) => {
         try {
             const { id } = req.params;
-            // Implementation to get specific job from third-party API
             res.status(200).json({ message: `Get job with ID: ${id}` });
         } catch (error) {
             res.status(500).json({ error: error.message });
@@ -32,6 +34,10 @@ const jobController = {
             res.status(500).json({ error: error.message });
         }
     }
+
+    //deletejob
+
 };
+
 
 export default jobController; 
