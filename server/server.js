@@ -15,7 +15,7 @@ app.use(
     })
   );
 
-  app.use('/api', userRoutes)
+app.use('/api', userRoutes)
 // Start server independently of the database
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
