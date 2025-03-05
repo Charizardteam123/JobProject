@@ -1,6 +1,6 @@
 export default function processJobs(jobs) {
   const objectResult = jobs.map((job) => ({
-    // id: job.id,
+    id: job.id,
     title: job.name,
     company: job.company?.name || 'Unknown company',
     location: job.locations.map((loc) => loc.name).join(', '),
