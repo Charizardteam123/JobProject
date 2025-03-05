@@ -64,13 +64,20 @@ userController.verifyUser = async (req, res, next) => {
     }
     // compare the entered password with the stored hashed password
     const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-      return res.status(401).json({ error: 'Invalid credentials' });
+    if (isMatch) {
+      res.status(200).json({
+        message: 'Login successful',
+        user: {
+          id: user._id,
+          email: user.email,
+          username: user.username,
+        }, // Return user info if login is successful
+      });
+      return; // End the request/response cycle here
     }
-    // store data in res.locals
-    res.locals.user = { id: user._id, email: user.email, username: user.username };
-    console.log('response', res.locals.user);
-    next();
+
+    // If password does not match, send error
+    return res.status(401).json({ error: 'Invalid credentials' });
   } catch (error) {
     console.error('Error during login:', error);
     next(error);
