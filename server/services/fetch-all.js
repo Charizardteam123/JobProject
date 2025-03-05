@@ -27,7 +27,7 @@ async function fetchAllJobsToFile() {
 
   const levels = ['Entry Level', 'Mid Level', 'Senior Level', 'Internship'];
 
-  // Build request parameters
+  // Build request parameters | URLSearchParams object is functionally similar to Map
   const params = new URLSearchParams();
 
   // Add filters
