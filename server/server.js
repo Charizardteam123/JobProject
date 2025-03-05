@@ -17,6 +17,7 @@ app.use(
 );
 
 app.use("/api", userRoutes);
+app.use
 
 // Start server independently of the database
 app.listen(port, () => {

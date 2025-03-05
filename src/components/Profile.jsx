@@ -61,8 +61,9 @@ function Profile() {
 
     const fetchJobs = async () => {
       try {
+        // user id and job id to do this in req.body 
         // Change endpoint
-        const res = await fetch(`http://localhost:3000/api/users/${userId}/jobs`);
+        const res = await fetch(`http://localhost:3000/api/${userId}/jobs`);
         const data = await res.json();
         setSavedJobs(data.saved || []);
         setAppliedJobs(data.applied || []);
