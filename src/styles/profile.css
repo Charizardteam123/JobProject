@@ -1,0 +1,28 @@
+.profile-container {
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.userinfo {
+    border: 1px solid #ddd;
+    width: 90%;
+    text-align: left;
+    padding-left: 2rem;
+    padding-bottom: 2rem;
+}
+
+.savedjobs {
+    border: 1px solid #ddd;
+    width: 90%;
+    padding: 2rem;
+}
+
+.appliedjobs {
+    border: 1px solid #ddd;
+    width: 90%;
+    padding: 2rem;
+}
