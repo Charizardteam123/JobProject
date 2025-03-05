@@ -7,7 +7,9 @@ const router = express.Router();
 router.post('/signup', userController.createUser);
 
 // Verify user (login)
-router.post('/login', userController.verifyUser);
+router.post('/login', userController.verifyUser, (req, res) => {
+    return res.status(200).json(res.locals.user)
+});
 
 // Get user's saved jobs
 router.get('/saved-jobs', userController.getSavedJobs);
