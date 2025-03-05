@@ -3,19 +3,40 @@ import { useNavigate } from 'react-router';
 import '../styles/dashboard.css';
 import user from '../assets/user.svg';
 import LogoutButton from './Logout';
+import logo from '../assets/logo.png';
 
 function NavBar() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const navigate = useNavigate();
   const userId = localStorage.getItem('userId');
 
-  // const handleLogOut = () => {
+  const handleLogout = async () => {
+    try {
+      const response = await fetch('http://localhost:3000/api/logout', {
+        method: 'POST',
+      });
 
-  // }
+      if (!response.ok) {
+        throw new Error('Logout failed');
+      }
+
+      // Clear localStorage
+      localStorage.removeItem('userId');
+      localStorage.removeItem('username');
+      localStorage.removeItem('userEmail');
+
+      console.log('Logout successful');
+      navigate('/'); // Redirect to login
+    } catch (err) {
+      console.error('Logout error:', err);
+    }
+  };
 
   return (
     <nav className='navbar'>
-      <div className='logo'>NAME</div>
+      <div className='logo'>
+        <img src={logo} alt='Logo' className='logo' />
+      </div>
 
       <div className='user-menu'>
         <img
