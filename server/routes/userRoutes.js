@@ -22,5 +22,8 @@ router.put('/resume/update', userController.updateResume);
 // logout route
 router.post('/logout', userController.logout);
 
+// logout route
+router.post('/logout', userController.logout);
+
 export default router;
 

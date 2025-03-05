@@ -1,12 +1,13 @@
 import mongoose from "mongoose";
 
 const jobSchema = new mongoose.Schema({
-  jobId: { type: String, required: true }, // ID from third-party API?
+  jobId: { type: String, required: true }, 
   title: { type: String, required: true },
   company: { type: String, required: true },
+  category: { type: String },
   location: { type: String },
+  level: { type: String },
   description: { type: String },
-  salary: { type: String },
   url: { type: String },
   savedBy: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
   savedAt: { type: Date, default: Date.now },
