@@ -1,4 +1,4 @@
-import User from '../models/userModel';
+import User from '../models/userModel.js';
 import bcrypt from 'bcryptjs';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -33,11 +33,15 @@ userController.createUser = async (req, res, next) => {
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    const user = new User({ email, password: hashedPassword });
+    const user = new User({ 
+      username,
+      email,
+      password: hashedPassword 
+    });
     // saves the new user to mongodb
     await user.save();
     // stores created user in res.locals
-    res.locals.user = { id: user._id, email: user.email };
+    res.locals.user = { id: user._id, email: user.email, username: user.username };
     return res
       .status(201)
       .json({ message: 'User created successfully', user: res.locals.user });
@@ -85,3 +89,108 @@ userController.getSavedJobs = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+// Update user profile (including resume)
+userController.updateProfile = async (req, res, next) => {
+  try {
+    const { resume } = req.body;
+    const userId = req.user.id; // Assuming you'll have auth middleware setting this
+
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      { resume },
+      { new: true, select: '-password' } // Return updated user, exclude password
+    );
+
+    if (!updatedUser) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    res.status(200).json({
+      message: 'Profile updated successfully',
+      user: updatedUser
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Add a job to user's saved jobs
+userController.addSavedJob = async (req, res, next) => {
+  try {
+    const { jobId } = req.body;
+    const userId = req.user.id; // From auth middleware
+
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    // Check if job is already saved
+    if (user.savedJobs.includes(jobId)) {
+      return res.status(400).json({ error: 'Job already saved' });
+    }
+
+    user.savedJobs.push(jobId);
+    await user.save();
+
+    res.status(200).json({
+      message: 'Job saved successfully',
+      savedJobs: user.savedJobs
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Remove a job from user's saved jobs
+userController.removeSavedJob = async (req, res, next) => {
+  try {
+    const { jobId } = req.params;
+    const userId = req.user.id; // From auth middleware
+
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    user.savedJobs = user.savedJobs.filter(id => id.toString() !== jobId);
+    await user.save();
+
+    res.status(200).json({
+      message: 'Job removed successfully',
+      savedJobs: user.savedJobs
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Get user profile (including resume)
+userController.getProfile = async (req, res, next) => {
+  try {
+    const userId = req.user.id; // From auth middleware
+    const user = await User.findById(userId)
+      .select('-password')
+      .populate('savedJobs');
+
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    res.status(200).json({
+      user: {
+        id: user._id,
+        username: user.username,
+        email: user.email,
+        resume: user.resume,
+        savedJobs: user.savedJobs,
+        createdAt: user.createdAt
+      }
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export default userController;
