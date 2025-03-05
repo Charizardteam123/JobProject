@@ -76,20 +76,20 @@ userController.verifyUser = async (req, res, next) => {
 };
 
 
-// userController.getSavedJobs = async (req, res) => {
-//   try {
-//     const userId = req.user.id; // From auth middleware
-//     const user = await User.findById(userId)
-//       .populate('savedJobs') // This will populate the saved jobs data
-//       .select('savedJobs');
+userController.getSavedJobs = async (req, res) => {
+  try {
+    const userId = req.user.id; // From auth middleware
+    const user = await User.findById(userId)
+      .populate('savedJobs') // This will populate the saved jobs data
+      .select('savedJobs');
 
-//     res.status(200).json({
-//       savedJobs: user.savedJobs,
-//     });
-//   } catch (error) {
-//     res.status(500).json({ error: error.message });
-//   }
-// };
+    res.status(200).json({
+      savedJobs: user.savedJobs,
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
 
 // Update user profile (including resume)
 userController.updateProfile = async (req, res, next) => {
@@ -144,28 +144,28 @@ userController.addSavedJob = async (req, res, next) => {
   }
 };
 
-// // Remove a job from user's saved jobs
-// userController.removeSavedJob = async (req, res, next) => {
-//   try {
-//     const { jobId } = req.params;
-//     const userId = req.user.id; // From auth middleware
+// Remove a job from user's saved jobs
+userController.removeSavedJob = async (req, res, next) => {
+  try {
+    const { jobId } = req.params;
+    const userId = req.user.id; // From auth middleware
 
-//     const user = await User.findById(userId);
-//     if (!user) {
-//       return res.status(404).json({ error: 'User not found' });
-//     }
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
 
-//     user.savedJobs = user.savedJobs.filter(id => id.toString() !== jobId);
-//     await user.save();
+    user.savedJobs = user.savedJobs.filter(id => id.toString() !== jobId);
+    await user.save();
 
-//     res.status(200).json({
-//       message: 'Job removed successfully',
-//       savedJobs: user.savedJobs
-//     });
-//   } catch (error) {
-//     next(error);
-//   }
-// };
+    res.status(200).json({
+      message: 'Job removed successfully',
+      savedJobs: user.savedJobs
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 
 // Get user profile (including resume)
 userController.getProfile = async (req, res, next) => {
