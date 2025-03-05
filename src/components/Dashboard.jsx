@@ -67,9 +67,9 @@ function Dashboard() {
       </div>
 
       <div className="filters-section">
-        <button>Location</button>
-        <button>Remote</button>
-        <button>Company</button>
+        <button>Best Fit</button>
+        <button>Alternative</button>
+  
       </div>
 
       <div className="jobs-grid">
@@ -87,6 +87,8 @@ function Dashboard() {
           <p>Loading ...</p>
         )}
       </div>
+
+      
     </div>
   );
 }
