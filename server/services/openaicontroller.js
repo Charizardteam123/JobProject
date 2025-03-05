@@ -272,13 +272,21 @@ Here are some potential job matches from our database:
 
 ${jobContext}
 
+REMEMBER TO CHECK THAT YOUR CURLY AND SQUARE BRACES ARE PROPERLY OPENED AND CLOSED. IT'S IMPERATIVE THAT THIS IS DONE CORRECTLY.
 Please provide:
-1. The top 3 best matching jobs from the list above
-2. 2 alternative career paths the candidate could consider
-3. 3 skills the candidate should develop to improve their chances
+1. The top 5 best matching jobs from the list above, only respond in the format of the point 2. 
+2. Return ONLY valid JSON (no additional text or explanation) as an array of job objects with keys title, location, company, and description.
+REMEMBER TO CHECK THAT YOUR CURLY AND SQUARE BRACES ARE PROPERLY OPENED AND CLOSED. IT'S IMPERATIVE THAT THIS IS DONE CORRECTLY.
+For example, what I expect is just this format: [{title: ..., location: ... , company: ..., description: ...}, {title: ..., location: ... , company: ..., description: ...}] 
+SKIP punctuation signs (except the one needed for the array and objects), other lists, or strings (e.g.: array of objects format).
+I JUST NEED THE ARRAY OF OBJECT NOTHING ELSE. 
+CHECK YOUR CURLY AND SQUARE BRACES ARE CORRECTLY OPEN AND CLOSE.
+REMEMBER TO CHECK THAT YOUR CURLY AND SQUARE BRACES ARE PROPERLY OPENED AND CLOSED. IT'S IMPERATIVE THAT THIS IS DONE CORRECTLY.
 `;
-
+ // 2. 2 alternative career paths the candidate could consider
+    // 3. 3 skills the candidate should develop to improve their chances
     // Use gpt-3.5-turbo instead of gpt-4 to reduce token usage
+   
     const response = await openai.chat.completions.create({
       model: 'gpt-3.5-turbo',
       messages: [
@@ -310,7 +318,8 @@ Please provide:
 
     // Store the complete recommendation text
     res.locals.jobRecommendations = content;
-    console.log('Job recommendations generated successfully');
+    console.log('Job recommendations generated successfully', res.locals.jobRecommendations);
+  
 
     return next();
   } catch (err) {

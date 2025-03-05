@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Cookie&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+.profile-container {
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.userinfo {
+    border: 1px solid #ddd;
+    width: 90%;
+    text-align: left;
+    padding-left: 2rem;
+    padding-bottom: 2rem;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    padding: 2rem
+}
+
+.user-icon2 {
+    width: 5rem;
+    height: 5rem;
+}
+
+.userinfo ul {
+    list-style: none;
+
+}
+
+.userinfo h2 {
+    font-family: "Cabin";
+    font-weight: bolder;
+}
+
+.userinfo h3 {
+    font-style: italic;
+    font-weight: lighter;
+    font-size: 1rem;
+    font-family: 'Cabin';
+    color:#213547;
+}
+
+.userinfo h5 {
+    font-family: 'Cabin';
+    color: #2f3c48;
+    font-weight: lighter;
+}
+
+.userinfo h5:hover{
+    text-decoration: underline;
+    color: #213547;
+    cursor: pointer;
+}
+
+.resume-icon {
+    height: 1.5rem;
+}
+
+.resume-container {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.savedjobs {
+    border: 1px solid #ddd;
+    width: 90%;
+    padding: 2rem;
+    text-align: left;
+}
+
+.savedjobs h2{
+    font-family: "Cabin";
+    font-weight: bolder;
+
+}
+
+.appliedjobs {
+    border: 1px solid #ddd;
+    width: 90%;
+    padding: 2rem;
+    text-align: left;
+}
+
+.appliedjobs h2{
+    font-family: "Cabin";
+    font-weight: bolder;
+}
