@@ -15,7 +15,7 @@ function Login() {
     }
 
     try {
-      const response = await fetch("endpoint", {
+      const response = await fetch("http://localhost:3000/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -28,12 +28,14 @@ function Login() {
 
       const data = await response.json();
 
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("userId", data.userId);
+      console.log("log in data", data);
+
+      // localStorage.setItem("token", data.token);
+      localStorage.setItem("userId", data.id);
 
       console.log("Login successful");
 
-      navigate(`/home/${data.userId}`);
+      navigate(`/home/123`);
     } catch (err) {
       console.error("Login error", err);
       alert("Login failed");

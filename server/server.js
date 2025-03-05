@@ -1,9 +1,21 @@
 //server.js file is the entry point for the server, while app.js is the main file for the express app
 import app from './app.js';
 import connectDB from './database.js';
+import cors from "cors";
+import userRoutes from './routes/userRoutes.js'
 
 const port = process.env.PORT || 3000;
 
+app.use(
+    cors({
+      origin: "http://localhost:5173",
+      methods: ["GET", "POST", "DELETE", "PUT"],
+      allowedHeaders: ["Content-Type", "Authorization"],
+      credentials: true,
+    })
+  );
+
+  app.use('/api', userRoutes)
 // Start server independently of the database
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
