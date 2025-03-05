@@ -1,43 +1,8 @@
-// import React, { useState } from "react";
-// import { useNavigate } from "react-router";
-// import NavBar from "./NavBar";
-// import user from "../assets/user.svg";
-// import JobCard from "./JobCard";
-// import '../styles/profile.css'
-
-// function Profile() {
-//   const navigate = useNavigate();
-  
-//   return (
-//     <>
-//       <div>
-//         <NavBar />
-//       </div>
-//       <div className="profile-container">
-//         <div className="userinfo">
-//           <img src={user} alt="User Icon" className="user-icon" />
-//           <h2>Welcome back @User!</h2>
-//           <h3>user@gmail.com</h3>
-//           <h5>Resume</h5>
-//         </div>
-//         <div className="savedjobs">
-//           <h3>Saved jobs</h3>
-//           <JobCard/>
-//         </div>
-//         <div className="appliedjobs">
-//           <h3>Applied Jobs</h3>
-//           <JobCard/>
-//         </div>
-//       </div>
-//     </>
-//   );
-// }
-
-// export default Profile;
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import NavBar from "./NavBar";
-import user from "../assets/user.svg";
+import user from "../assets/userProfile.svg";
+import resume from "../assets/resume.svg";
 import JobCard from "./JobCard";
 import "../styles/profile.css";
 
@@ -53,6 +18,8 @@ function Profile() {
     const userId = localStorage.getItem("userId");
     const storedUsername = localStorage.getItem("username");
     setUsername(storedUsername || "");
+
+    console.log("Retrieved userId from localStorage:", userId);
 
     if (!userId) {
       navigate("/");
@@ -80,14 +47,18 @@ function Profile() {
       <NavBar />
       <div className="profile-container">
         <div className="userinfo">
-          <img src={user} alt="User Icon" className="user-icon" />
-          <h2>Welcome back {username}!</h2>
-          <h3>{storedEmail}</h3>
-          <h5>Resume</h5>
+          <img src={user} alt="User Icon" className="user-icon2" />
+          <ul>
+            <li><h2>Welcome back {username}!</h2></li>
+            <li><h3>{storedEmail}</h3></li>
+            <li className="resume-container"><img src={resume} alt="Resume Icon" className="resume-icon" /><h5>Resume</h5></li>
+          </ul>
+          
+         
         </div>
 
         <div className="savedjobs">
-          <h3>Saved jobs</h3>
+          <h2>Saved Jobs</h2>
           {savedJobs.map((job, index) => (
             <JobCard
               key={index}
@@ -101,7 +72,7 @@ function Profile() {
         </div>
 
         <div className="appliedjobs">
-          <h3>Applied Jobs</h3>
+          <h2>Applied Jobs</h2>
           {appliedJobs.map((job, index) => (
             <JobCard
               key={index}

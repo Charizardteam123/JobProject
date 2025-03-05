@@ -42,7 +42,10 @@ body {
   font-size: 20px;
   font-weight: bold;
   color: white;
-  padding-top: 2.5rem;
+  width:170px;
+  height: 100px;
+  margin-top: -1.3rem;
+  margin-left: -1rem;
 }
 
 /* User Menu */
@@ -109,22 +112,27 @@ body {
   padding: 8px 20px;
   font-size: 16px;
   border: none;
-  background-color: #007bff;
+  background-color: #22c769;
   color: white;
   cursor: pointer;
   border-radius: 5px;
+  margin-left: 40rem;
+  box-shadow: 0 4px 8px 0 rgba(122, 122, 122, 0.401);;
 }
 
 .ai-prompt-section button:hover {
-  background-color: #0056b3;
+  background-color: #20a158;
+  box-shadow: 0 3px 6px 0 rgba(122, 122, 122, 0.19);;
 }
 
 /* Filters Section */
 .filters-section {
   display: flex;
   justify-content: left;
+  margin-right: 33.5rem;
   gap: 10px;
   margin-top: 20px;
+ 
 }
 
 .filters-section button {

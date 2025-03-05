@@ -28,16 +28,16 @@ function Login() {
 
       const data = await response.json();
 
-      console.log("log in data", data);
+      console.log("log in data", data.user);
 
       // localStorage.setItem("token", data.token);
-      localStorage.setItem("userId", data.id);
-      localStorage.setItem("username", data.username);
-      localStorage.setItem("userEmail", data.email)
+      localStorage.setItem("userId", data.user.id);
+      localStorage.setItem("username", data.user.username);
+      localStorage.setItem("userEmail", data.user.email)
 
-      console.log("Login successful");
+      console.log("Login successful, User ID:", data.user.id);
 
-      navigate(`/home/${data.id}`);
+      navigate(`/home/${data.user.id}`);
     } catch (err) {
       console.error("Login error", err);
       alert("Login failed");
