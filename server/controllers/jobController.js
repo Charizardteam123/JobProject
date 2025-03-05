@@ -1,6 +1,7 @@
 import Job from '../models/jobModel.js';
 import User from '../models/userModel.js';
 
+///receive data from the ai controller...
 const jobController = {
   getAllJobs: async (req, res) => {
     try {
