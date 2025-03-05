@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import "../styles/login_register.css";
+import logo from "../assets/logo.png";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -48,7 +49,7 @@ function Login() {
     <div className="login-container">
       <div className="form-container">
         <div className="login-title">
-          <h1>Name</h1>
+          <img src={logo} alt = 'logo' className="logo-in-login"/>
           <p>Your intelligent career companion</p>
         </div>
         <form onSubmit={handleSubmit} className="form">

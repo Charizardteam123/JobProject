@@ -1,9 +1,20 @@
 import express from 'express';
-import aiController from '../controllers/aiController.js';
+import { parseUserQuery } from '../services/userQuery.js';
+import { queryOpenAIEmbedding, queryOpenAIChat } from '../services/openaicontroller.js';
+import { queryPineconeDatabase } from '../services/pinecone.js';
 
 const router = express.Router();
 
-// Route for submitting resume and query
-router.post('/submit-resume-query', aiController.handleResumeQuery);
+// POST endpoint for job recommendations
+router.post(
+  '/job-recommendations',
+  parseUserQuery,
+  queryOpenAIEmbedding,
+  queryPineconeDatabase,
+  queryOpenAIChat,
+  (req, res) => {
+    return res.status(200).json({recommendation: res.locals.jobRecommendations});
+  }
+);
 
-export default router; 
+export default router;

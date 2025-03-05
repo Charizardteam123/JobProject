@@ -3,6 +3,7 @@ import app from "./app.js";
 import connectDB from "./database.js";
 import cors from "cors";
 import userRoutes from "./routes/userRoutes.js";
+import aiRoutes from "./routes/aiRoutes.js"
 dotenv.config();
 
 const port = process.env.PORT || 3000;
@@ -17,6 +18,7 @@ app.use(
 );
 
 app.use("/api", userRoutes);
+app.use("/api", aiRoutes);
 app.use
 
 // Start server independently of the database

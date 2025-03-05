@@ -50,6 +50,11 @@ html, body, #root {
   font-size: 1rem;
 }
 
+.logo-in-login {
+  width:20rem;
+  margin-left: -1rem;
+}
+
 .form {
   display: flex;
   flex-direction: column;

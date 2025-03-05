@@ -1,78 +1,51 @@
-// import React, { useState } from "react";
-// import JobCard from "./JobCard";
-// import "../styles/dashboard.css";
-// import NavBar from "./NavBar";
-
-// function Dashboard() {
-//   const [resumeText, setResumeText] = useState("");
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     console.log("Submitted resume:", resumeText);
-//   };
-
-//   return (
-//     <div className="dashboard-container">
-//       {/* Navbar */}
-//       <NavBar />
-
-//       {/* AI Prompt Section */}
-//       <div className="ai-prompt-section">
-//         <form onSubmit={handleSubmit}>
-//           <textarea
-//             placeholder="prompt AI (text area)"
-//             value={resumeText}
-//             onChange={(e) => setResumeText(e.target.value)}
-//           />
-//           <button type="submit">Submit</button>
-//         </form>
-//       </div>
-
-//       {/* Filters Section */}
-//       <div className="filters-section">
-//         <button>Location</button>
-//         <button>Remote</button>
-//         <button>Company</button>
-//       </div>
-
-//       {/* Job Cards Section */}
-//       <div className="jobs-grid">
-//         <JobCard />
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default Dashboard;
 import React, { useState } from "react";
 import JobCard from "./JobCard";
 import "../styles/dashboard.css";
 import NavBar from "./NavBar";
 
 function Dashboard() {
-
   const [resumeText, setResumeText] = useState("");
   const [jobs, setJobs] = useState([]);
-
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     console.log("Submitted resume:", resumeText);
 
     try {
-      // Change endpoint
-      const response = await fetch("http://localhost:3000/api/ai", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt: resumeText }),
-      });
+      const response = await fetch(
+        "http://localhost:3000/api/job-recommendations",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ resume: resumeText }),
+        }
+      );
 
-      const data = await response.json();
-      console.log("Data in Dashboard line 72: ",data)
-      
-      setJobs(data);
+      const parsedResponse = await response.json();
+      console.log("Raw AI Response:", parsedResponse.recommendation);
+      // const jobArray = JSON.parse(data);
+      let jobArray;
+      if (typeof parsedResponse.recommendation === "string") {
+        // 2. Parse it to turn it into a real array
+        jobArray = JSON.parse(parsedResponse.recommendation);
+      } else {
+        // 3. Maybe it's already an array? (Edge case)
+        jobArray = parsedResponse.recommendation;
+      }
+
+      if (Array.isArray(jobArray)) {
+        setJobs(jobArray);
+      } else {
+        console.error("Expected an array, but got:", jobArray);
+        setJobs([]);
+      }
     } catch (error) {
-      console.error("Error fetching AI jobs:", error);
+      console.error("Error parsing recommendation as JSON:", error);
+      setJobs([]);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -80,7 +53,6 @@ function Dashboard() {
     <div className="dashboard-container">
       <NavBar />
 
- 
       <div className="ai-prompt-section">
         <form onSubmit={handleSubmit}>
           <textarea
@@ -88,29 +60,32 @@ function Dashboard() {
             value={resumeText}
             onChange={(e) => setResumeText(e.target.value)}
           />
-          <button type="submit" className="button-ai">Submit</button>
+          <button type="submit" className="button-ai" disabled={loading}>
+            {loading ? "🔄 Getting Jobs" : "Submit"}
+          </button>
         </form>
       </div>
 
-   
       <div className="filters-section">
         <button>Location</button>
         <button>Remote</button>
         <button>Company</button>
       </div>
 
-     
       <div className="jobs-grid">
-        {jobs.map((job, index) => (
-          <JobCard
-            key={index}
-            role={job.role}
-            location={job.location}
-            company={job.company}
-            description={job.description}
-            link={job.link}  // if AI provides a link to apply
-          />
-        ))}
+        {Array.isArray(jobs) && jobs.length > 0 ? (
+          jobs.map((job, index) => (
+            <JobCard
+              key={index}
+              role={job.title} // Change `role` to `title`
+              location={job.location}
+              company={job.company}
+              description={job.description}
+            />
+          ))
+        ) : (
+          <p>Loading ...</p>
+        )}
       </div>
     </div>
   );
