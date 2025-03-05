@@ -88,7 +88,7 @@ function Dashboard() {
             value={resumeText}
             onChange={(e) => setResumeText(e.target.value)}
           />
-          <button type="submit">Submit</button>
+          <button type="submit" className="button-ai">Submit</button>
         </form>
       </div>
 
