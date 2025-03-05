@@ -1,0 +1,32 @@
+Demo
+ New York, NY
+demo@gmail.com 
+
+Professional Summary
+Software Engineer with 7+ years of experience facilitating cutting-edge engineering solutions with a wide range of
+e-commerce application and technology skills. Proven ability to leverage full-stack knowledge and experience to build interactive and user-centered website designs to scale. Extensive expertise in large system architecture development and administration, as well as network design and configuration.
+Skills
+Hard Skills:
+Requirements analysis
+Python
+HTML
+CSS
+JS
+Testing
+Documentation
+Professional Experience
+New Enterprise
+Senior Software Engineer | San Jose, CA | January 2022 – Present
+Structure several internal systems comprising order entry/management tools, conversion/revenue reporting, and production workflow tracking, as well as design custom REST APIs built in Python and Laravel PHP
+Installed Linux servers and virtualized environments using Docker, Hyper-V, and Amazon Web Services
+Designed and implemented PHP web application, streamlining high server traffic resource configuration and allocation
+Sephora
+Software Engineer | San Francisco, CA | January 2019 – December 2021
+Successfully generated back-end programming utilizing LAMP stack; Linux (CentOS 5/Redhat), Apache with Kohana 2, PHP 5, CSS, JavaScript/jQuery, and MySQL frameworks
+Created e-commerce sites integrated with PayPal, Authorize.net, and other payment APIs
+Provided leadership as a subject matter expert (SME) on hosting issues, client and staff logins,
+and general upgrades/maintenance of servers
+Implemented new C# class library for the SQL server database access layer, and updated previous web page frameworks
+Education
+Miami State University | Bachelor of Science in Computer Science
+Graduation Date: May 2018

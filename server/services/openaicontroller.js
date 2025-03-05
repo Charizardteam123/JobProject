@@ -277,7 +277,7 @@ Please provide:
 1. The top 5 best matching jobs from the list above, only respond in the format of the point 2. 
 2. Return ONLY valid JSON (no additional text or explanation) as an array of job objects with keys title, location, company, and description.
 REMEMBER TO CHECK THAT YOUR CURLY AND SQUARE BRACES ARE PROPERLY OPENED AND CLOSED. IT'S IMPERATIVE THAT THIS IS DONE CORRECTLY.
-For example, what I expect is just this format: [{title: ..., location: ... , company: ..., description: ...}, {title: ..., location: ... , company: ..., description: ...}] 
+For example, what I expect is just this format: [{title: ..., location: ... , company: ..., description: ..., link: ...}, {title: ..., location: ... , company: ..., description: ..., link: ...}] 
 SKIP punctuation signs (except the one needed for the array and objects), other lists, or strings (e.g.: array of objects format).
 I JUST NEED THE ARRAY OF OBJECT NOTHING ELSE. 
 CHECK YOUR CURLY AND SQUARE BRACES ARE CORRECTLY OPEN AND CLOSE.
