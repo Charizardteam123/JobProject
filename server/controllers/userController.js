@@ -51,6 +51,7 @@ userController.createUser = async (req, res, next) => {
 };
 
 userController.verifyUser = async (req, res, next) => {
+  console.log("log in triggered")
   const { email, password } = req.body;
   if (!email || !password) {
     return res.status(400).json({ error: 'Email and password are required' });
@@ -67,13 +68,15 @@ userController.verifyUser = async (req, res, next) => {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
     // store data in res.locals
-    res.locals.user = { id: user._id, email: user.email };
+    res.locals.user = { id: user._id, email: user.email, username: user.username };
+    console.log('response', res.locals.user);
     next();
   } catch (error) {
     console.error('Error during login:', error);
     next(error);
   }
 };
+
 
 userController.getSavedJobs = async (req, res) => {
   try {
@@ -89,7 +92,28 @@ userController.getSavedJobs = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
-
+// add text-based resume
+userController.updateResume = async(req, res, next) => {
+  const { resume } = req.body;
+  const userId = req.user.id;
+  if(!resume) {
+    return res.status(400).json({ error: 'Resume content is required' });
+  } 
+  try {
+    // find userId and update the resume property
+  const updatedUser = await User.findByIdAndUpdate( userId, { resume }, {new: true, select: 'resume' });
+  // if there is no user by that userId then return an error
+  if (!updatedUser) {
+    return res.status(404).json({ error: 'User not found' });
+  }
+  res.status(200).json({
+    message: 'Resume stored successfully',
+    resume: updatedUser.resume
+  });
+  } catch(error) {
+    next(error);
+  }
+};
 // Update user profile (including resume)
 userController.updateProfile = async (req, res, next) => {
   try {
@@ -190,6 +214,21 @@ userController.getProfile = async (req, res, next) => {
     });
   } catch (error) {
     next(error);
+  }
+};
+
+userController.logout = async (req, res) => {
+  try {
+    // Clear user session data if needed
+    res.status(200).json({ 
+      success: true, 
+      message: 'Logged out successfully' 
+    });
+  } catch (error) {
+    res.status(500).json({ 
+      success: false, 
+      message: 'Error during logout' 
+    });
   }
 };
 
