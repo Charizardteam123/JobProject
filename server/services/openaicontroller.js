@@ -154,19 +154,8 @@ if (!apiKey) {
 console.log('Environment variables loaded from:', path.join(rootDir, '.env'));
 console.log('API key is set:', apiKey ? 'Yes' : 'No');
 
-// // If still no API key, use the hardcoded one (for development only)
-// if (!apiKey) {
-//   console.warn(
-//     'Warning: Using hardcoded API key. Use environment variables in production.'
-//   );
-//   apiKey =
-//     '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';
-// }
-
 const openai = new OpenAI({
   apiKey: apiKey,
-  // apiKey:
-  //   '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',
 });
 
 // Helper function to truncate job descriptions to reduce token usage
