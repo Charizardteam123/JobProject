@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+//give this data to the job controller...
 const aiController = {
     handleResumeQuery: async (req, res) => {
         const { resume, query } = req.body;
@@ -25,3 +26,4 @@ const aiController = {
 };
 
 export default aiController; 
+
