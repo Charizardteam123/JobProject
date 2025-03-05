@@ -1,0 +1,28 @@
+Carschmit, Donna Isabel
+
+(954) 487 0991
+d.carschmit@gmail.com
+Linked In
+Git Hub
+
+SKILLS
+Strong in: Express, React, JavaScript, Java, Python, PostgreSQL, MongoDB, MySQL, Node.js, MySQL
+Experience with: Prometheus, Docker, Grafana, InfluxDB
+
+PROJECTS
+Mantis - OSLabs | Software Engineer 			2025 - Present
+Chose Express for its lightweight and flexible architecture, allowing seamless middleware integration for request validation, authentication, and traffic routing in an API Gateway. Implemented JWT-based authentication to secure API requests while ensuring efficient request handling and structured data flow for real-time monitoring with Prometheus
+Integrated Grafana with Prometheus to visualize real-time API metrics, utilizing histograms and PromQL functions like histogram_quantile  and rate  for precise latency and traffic analysis. Configured Grafana to pull historical analytics from InfluxDB, enabling trend analysis and long-term observability of API behavior
+Implemented InfluxDB with dedicated per-user buckets, enabling scalable, efficient storage and retrieval of API performance metrics and connected with MongoDB to store user-specific data, ensuring a flexible and scalable backend.
+Implemented performance testing using k6 to evaluate system behavior under varying traffic loads, utilizing WireMock to mock external API dependencies and isolate service performance. This approach enabled precise control over test scenarios, reducing variability in benchmarking API response times, throughput, and error rates. By leveraging k6’s scripting capabilities, tests were automated to simulate realistic user interactions, ensuring system scalability and resilience under heavy load
+Used Docker Compose to orchestrate Prometheus, Grafana, InfluxDB, MongoDB, WireMock, and k6, enabling seamless API simulation, load testing, and real-time monitoring. This setup streamlined service discovery, facilitated automated performance testing with k6 and Wiremock, and provided an isolated, scalable infrastructure to efficiently test API interactions while maintaining structured data storage in MongoDB
+Built a React-based dashboard with Tailwind CSS to visualize real-time API metrics and historical trends. Used React Router for seamless navigation and modular components for scalability. Integrated Grafana panels to display Prometheus-scraped metrics from InfluxDB, enabling data-driven monitoring and decision-making
+DashPoint - Software Engineer 				2024 - 2025
+Implemented React Router to enable dynamic client-side navigation, improving user experience and reducing load times
+Implemented PostgreSQL to manage relational data efficiently, ensuring integrity and scalability.
+Utilized Vite to enhance frontend development speed and optimize production builds
+BookWise AI 
+Utilized OpenAI’s GPT-based API to power personalized book recommendations, enabling real-time and context-aware suggestions that significantly improved the user experience
+Education
+Universidad de Buenos Aires, Medicine 					2020
+Universidad Argentina de la Empresa, Software Engineering 		2024
