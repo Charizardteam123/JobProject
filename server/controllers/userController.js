@@ -225,6 +225,7 @@ userController.logout = async (req, res) => {
       message: 'Logged out successfully' 
     });
   } catch (error) {
+    console.log(error)
     res.status(500).json({ 
       success: false, 
       message: 'Error during logout' 
