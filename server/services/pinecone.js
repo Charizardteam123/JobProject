@@ -20,19 +20,8 @@ let pineconeApiKey = process.env.PINECONE_API_KEY;
 // Log environment variables for debugging (without exposing the actual key)
 console.log('Pinecone API key is set:', pineconeApiKey ? 'Yes' : 'No');
 
-// // If no API key in environment, use the hardcoded one (for development only)
-// if (!pineconeApiKey) {
-//   console.warn(
-//     'Warning: Using hardcoded Pinecone API key. Use environment variables in production.'
-//   );
-//   pineconeApiKey =
-//     'pcsk_3uvEGq_L5Rp7JU58ARvLNxHT7aFmBDCCNRm6cJS5DLS8F9HUx5T8qkxPFokWYa2eViNPzj';
-// }
-
 const pc = new Pinecone({
   apiKey: pineconeApiKey,
-  // apiKey:
-  //   'pcsk_3uvEGq_L5Rp7JU58ARvLNxHT7aFmBDCCNRm6cJS5DLS8F9HUx5T8qkxPFokWYa2eViNPzj',
 });
 
 // Use the correct index name as provided in your requirements
