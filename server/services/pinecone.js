@@ -1,8 +1,38 @@
 import { Pinecone } from '@pinecone-database/pinecone';
+import dotenv from 'dotenv';
+import { fileURLToPath } from 'url';
+import path from 'path';
+import process from 'process';
+
+// Get the directory name of the current module
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Find the root directory (where .env should be located)
+const rootDir = path.resolve(__dirname, '../..');
+
+// Load environment variables from .env file
+dotenv.config({ path: path.join(rootDir, '.env') });
+
+// Check if API key is available in environment
+let pineconeApiKey = process.env.PINECONE_API_KEY;
+
+// Log environment variables for debugging (without exposing the actual key)
+console.log('Pinecone API key is set:', pineconeApiKey ? 'Yes' : 'No');
+
+// // If no API key in environment, use the hardcoded one (for development only)
+// if (!pineconeApiKey) {
+//   console.warn(
+//     'Warning: Using hardcoded Pinecone API key. Use environment variables in production.'
+//   );
+//   pineconeApiKey =
+//     'pcsk_3uvEGq_L5Rp7JU58ARvLNxHT7aFmBDCCNRm6cJS5DLS8F9HUx5T8qkxPFokWYa2eViNPzj';
+// }
 
 const pc = new Pinecone({
-  apiKey:
-    'pcsk_3uvEGq_L5Rp7JU58ARvLNxHT7aFmBDCCNRm6cJS5DLS8F9HUx5T8qkxPFokWYa2eViNPzj',
+  apiKey: pineconeApiKey,
+  // apiKey:
+  //   'pcsk_3uvEGq_L5Rp7JU58ARvLNxHT7aFmBDCCNRm6cJS5DLS8F9HUx5T8qkxPFokWYa2eViNPzj',
 });
 
 // Use the correct index name as provided in your requirements
