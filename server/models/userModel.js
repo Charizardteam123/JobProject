@@ -7,7 +7,6 @@ const userSchema = new mongoose.Schema({
     savedJobs: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Job' }], 
     resume: { type: String, default: '' },
     createdAt: { type: Date, default: Date.now }
-    //user resume:
 });
 
 const User = mongoose.model('User', userSchema);
