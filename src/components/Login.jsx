@@ -32,10 +32,12 @@ function Login() {
 
       // localStorage.setItem("token", data.token);
       localStorage.setItem("userId", data.id);
+      localStorage.setItem("username", data.username);
+      localStorage.setItem("userEmail", data.email)
 
       console.log("Login successful");
 
-      navigate(`/home/123`);
+      navigate(`/home/${data.id}`);
     } catch (err) {
       console.error("Login error", err);
       alert("Login failed");

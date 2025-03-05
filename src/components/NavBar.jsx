@@ -6,7 +6,12 @@ import user from "../assets/user.svg";
 function NavBar() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const navigate = useNavigate();
-  const data = '1234';
+  const userId = localStorage.getItem("userId");
+
+  // const handleLogOut = () => {
+
+  // }
+
 
   return (
     <nav className="navbar">
@@ -22,9 +27,9 @@ function NavBar() {
 
         {isDropdownOpen && (
           <div className="dropdown-content">
-            <button onClick={() => navigate(`/home/${data}`)}>Dashboard</button>
+            <button onClick={() => navigate(`/home/${userId}`)}>Dashboard</button>
             <button onClick={() => navigate("/profile")}>Profile</button>
-            <button>Log out</button>
+            <button onClick={() => navigate("/")}>Log out</button>
           </div>
         )}
       </div>
