@@ -22,43 +22,43 @@ const jobController = {
     }
   },
 
-  saveJob: async (req, res) => {
-    try {
-      const { userId, jobId } = req.body;
-      // Implementation to save job to user's saved/favorite jobs
-      if (!userId || !jobId) {
-        return res
-          .status(400)
-          .json({ error: 'User ID and Job ID are required' });
-      }
-      // check if user exists
-      const user = await User.findById(userId);
-      if (!user) {
-        return res.status(404).json({ error: 'User not found' });
-      }
-      // check if job exists
-      const job = await Job.findById(jobId);
-      if (!job) {
-        return res.status(404).json({ error: 'Job not found' });
-      }
+//   saveJob: async (req, res) => {
+//     try {
+//       const { userId, jobId } = req.body;
+//       // Implementation to save job to user's saved/favorite jobs
+//       if (!userId || !jobId) {
+//         return res
+//           .status(400)
+//           .json({ error: 'User ID and Job ID are required' });
+//       }
+//       // check if user exists
+//       const user = await User.findById(userId);
+//       if (!user) {
+//         return res.status(404).json({ error: 'User not found' });
+//       }
+//       // check if job exists
+//       const job = await Job.findById(jobId);
+//       if (!job) {
+//         return res.status(404).json({ error: 'Job not found' });
+//       }
 
-      // check if job is already saved
-      if (user.savedJobs.includes(jobId)) {
-        return res.status(400).json({ error: 'Job is already saved' });
-      }
+//       // check if job is already saved
+//       if (user.savedJobs.includes(jobId)) {
+//         return res.status(400).json({ error: 'Job is already saved' });
+//       }
 
-      // save job to user's profile
-      user.savedJobs.push(jobId);
-      await user.save();
+//       // save job to user's profile
+//       user.savedJobs.push(jobId);
+//       await user.save();
 
-      return res.status(200).json({
-        message: 'Job saved successfully',
-        data: { userId, jobId },
-      });
-    } catch (error) {
-      res.status(500).json({ error: error.message });
-    }
-  },
+//       return res.status(200).json({
+//         message: 'Job saved successfully',
+//         data: { userId, jobId },
+//       });
+//     } catch (error) {
+//       res.status(500).json({ error: error.message });
+//     }
+//   },
 
   deleteJob: async (req, res) => {
     const { userId, jobId } = req.body;
