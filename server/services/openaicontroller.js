@@ -126,19 +126,56 @@
 // };
 
 import OpenAI from 'openai';
+import dotenv from 'dotenv';
+import process from 'process';
+import { fileURLToPath } from 'url';
+import path from 'path';
+// import fs from 'fs';
+
+// Get the directory name of the current module
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Find the root directory (where .env should be located)
+const rootDir = path.resolve(__dirname, '../..');
+
+// Load environment variables from .env file
+dotenv.config({ path: path.join(rootDir, '.env') });
+
+// Check if API key is available in environment
+let apiKey = process.env.OPENAI_KEY;
+
+// If not, try with OPENAI_API_KEY (standard naming convention)
+if (!apiKey) {
+  apiKey = process.env.OPENAI_API_KEY;
+}
+
+// Log environment variables for debugging (without exposing the actual key)
+console.log('Environment variables loaded from:', path.join(rootDir, '.env'));
+console.log('API key is set:', apiKey ? 'Yes' : 'No');
+
+// // If still no API key, use the hardcoded one (for development only)
+// if (!apiKey) {
+//   console.warn(
+//     'Warning: Using hardcoded API key. Use environment variables in production.'
+//   );
+//   apiKey =
+//     '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';
+// }
 
 const openai = new OpenAI({
-  apiKey:
-    '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',
+  apiKey: apiKey,
+  // apiKey:
+  //   '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',
 });
 
 // Helper function to truncate job descriptions to reduce token usage
 const truncateDescription = (description) => {
   if (!description) return '';
-  // Limit description to approximately 100 words
+  // Limit description to approximately 300 words
   const words = description.split(' ');
-  if (words.length <= 100) return description;
-  return words.slice(0, 100).join(' ') + '...';
+  if (words.length <= 300) return description;
+  return words.slice(0, 300).join(' ') + '...';
 };
 
 export const queryOpenAIEmbedding = async (req, res, next) => {
