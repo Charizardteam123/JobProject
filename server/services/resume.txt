@@ -1,0 +1,58 @@
+Fabiano Santin 
+Stamford, CT • fabiano.santin@gmail.com • mobile: (347) 513-8437
+linkedin.com/in/fsantin • github.com/fsantin1985   
+	
+Skills
+
+Languages, Frameworks, Databases & Libraries: JavaScript (ES6+), TypeScript, HTML, CSS, React, Redux, Node.js Express, Mongoose, PostgreSQL, MongoDB (Atlas), Supabase, Pinecone
+Build Tools & Testing: Vite, Vitest, Jest, Supertest, MongoDB-Memory-Server, Postman
+AI & Machine Learning: OpenAI’s API, AI/ML (general concepts)
+DevOps & Deployment: Docker, AWS (EC2/Elastic Beanstalk/S3/RDS), Git/GitHub, GitHub Actions, CI/CD
+Concepts: Data structures, algorithms, object-oriented-programming
+
+Experience
+
+Cerberus Authentication Toolkit (OSLabs Tech Accelerator Program) | Software Engineer	Dec. 2024 - March 2025
+Developed Typescript-powered middleware, RESTful API routes, and error handling with Node.js’s V8 engine and Express streamlining authentication integration, enabling developers to implement among top authentication methods, including conventional email and password and WebAuthn passkey
+Built React components into a responsive authentication interface implementing custom hooks for state management and API interactions that decoupled business logic from UI components, streamlining development workflows while significantly enhancing code maintainability
+Designed a PostgreSQL database schema that leverages MVCC to prevent bottlenecks during peak activity and is ACID Compliant for data integrity.
+Reinforced the application’s reliability with Vitest running unit and integration tests in parallel using worker threads for lightning execution and 40.25% branch coverage.
+Calibrated an AI/RAG-driven OpenAI chatbot through Pinecone’s 1536-dimension vector database that guides developers in their authentication effort from an initial skeleton provided by the toolkit
+Deployed Redis to create a session store that instantly manages responsive user sessions while scaling at high volumes for flawless app experience even during periods of peak demand.
+Led a team of four engineers in researching and defining the product’s scope and executing its delivery 
+
+SPX Capital | New York, NY | Senior Credit Analyst	April 2020 - August 2024
+Conceived and led the creation of a Python app using SEC’s API to monitor EDGAR filings while leveraging OpenAI’s API to analyze changes in corporate risk factors and legal proceedings to quickly decipher lengthy corporate filings ahead of the market
+Systematized and coordinated the delivery of a cloud-based BI to monitor the team's investment universe of high-yield and high-grade issuers and thus identifying market opportunities and cutting down risk that achieved a 1.9 Sharpe ratio
+Performed credit research and analysis of US HY and IG bonds as well as leveraged loans and CDS that led to millions of dollars of profits for $10 billion multi-strategy hedge fund
+Built models to evaluate cash flow generation and valuation (DCF, LBO, SOTP, debt waterfall analysis)
+Presented weekly to the credit committee and made investment recommendations
+
+Grant’s Interest Rate Observer | New York, NY | Senior Financial Analyst	Sept. 2017- March 2020
+Investigated and unearthed stories for one of Wall Street’s most renowned investment newsletters
+Elucidated long and short global investments for various corporate bonds, stocks, precious metals, foreign exchange, and interest rate securities and derivatives
+NY Life Insurance Company | New York, NY | Financial Advisor	Oct. 2016 - Sept. 2017
+Prospected hundreds of clients and presented tax-savings and estate planning strategies
+XP Investimentos, Kondor Invest, Pollux Capital | Credit and Operations Analyst	March 2008- Sept. 2015
+Corporate debt analysis of US, Europe, and Latin America issuers 
+Built VBA-powered P&L, attribution, and risk reports to support operations of about $700MM in managed assets for the equity and credit desks
+
+ASML | Wilton, CT | Senior Design Project & Engineering Intern	Aug. 2007-Aug. 2008
+3rd place (of 31 teams) awarded by panel of industrial judges at UConn’s senior design project: designed a CFD parametric study utilizing Fluent to help ASML engineers in their photolithographic purging system
+
+Freelance Experience | New York, NY | Customer Acquisition Specialist	March 2020 - March 2022
+Built CMS-based websites and landing pages on SaaS marketing platforms for local Realtor to attract more prospects and sales funnels for an online marketer to generate more leads and sales
+Designed, tracked, and optimized the purchase of over $100,000 in online ads with Google Ads, Facebook Ads Manager, and Voluum for lead generation
+Configured a cloud-based CRM platform and developed automated email marketing funnels that captured and converted thousands of leads for leading influencer
+Created content and strategized through direct-response copywriting and marketing tactics for launching online products with lead magnet, lead generation, and product launch funnels 
+
+Education
+
+Codesmith | Advanced Residency for Software Engineering 	Dec. 2024 - March 2025
+
+University of Connecticut | Storrs, CT | BS in Engineering Physics - Mechanical Engineering (Minor in Math)	Dec. 2007
+Implemented VBA, AutoCAD, Solid Edge, MATLAB, Mathematica, and Fluent for various engineering projects
+
+Languages: fluent in Portuguese, advanced in Spanish, beginner French and German
+
+Hobbies & Interests: literature, theology, and philosophy, modern and dead languages, skiing.
